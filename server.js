@@ -6,7 +6,11 @@ const cors = require('cors');
 const app = express();
 
 // middleware 
-app.use(cors());
+app.use(cors({
+  origin: "*",
+  methods: ["GET", "POST", "PUT", "DELETE"],
+  allowedHeaders: ["Content-Type"],
+}));
 app.use(express.json());
 
 //  database connect
@@ -43,6 +47,6 @@ app.get("/", (req, res) => {
 });
 
 // server start
-app.listen(5000, () => {
-  console.log("Server running on port 5000");
+app.listen(PORT, () => {
+  console.log(`Server running on port 5000  ${PORT}`);
 });
